@@ -19,7 +19,8 @@ export default function Builder() {
     try {
       const data = await generateWebsite(prompt);
 
-      const fullCode = `<html>
+      const fullCode = `
+      <html>
         <head>
           <style>${data?.css || ""}</style>
         </head>
@@ -27,7 +28,7 @@ export default function Builder() {
           ${data?.html || ""}
           <script>${data?.js || ""}</script>
         </body>
-        </html>`;
+      </html>`;
 
       setResult(fullCode);
 
@@ -97,8 +98,8 @@ export default function Builder() {
               {loading ? (
                 <Loader text="Neural generation in progress..." />
               ) : (
-                <span>No website generated yet</span>
-              )}
+              <iframe srcDoc={result} sandbox="allow-scripts"/>
+)}
             </div>
           </div>
 
