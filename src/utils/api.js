@@ -8,6 +8,7 @@ export const generateWebsite = async (prompt) => {
     },
     body: JSON.stringify({ prompt }),
   });
+  const data = await res.json();
   //const res = {html: "<div><h1 >Hello World</h1><p>This is a generated website.</p></div>", css: "h1{ color: blue; } p{ color: white; }", js: ""};
-  return res;
-};
+  return data;
+}
